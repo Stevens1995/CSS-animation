@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>coin sprite animation</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		#animation{
+			display: block;
+		}
+	</style>
+</head>
+<body><canvas id="animation"></canvas></body>
+<script>
+	let coinImage = new Image();
+	coinImage.src = "./images/coin-sprite-animation.png";
+	
+//	document.body.appendChild(coinImage);
+	
+	let canvas = document.getElementById('animation');
+	canvas.height = window.innerHeight;
+	canvas.width = window.innerWidth;
+	
+	let context = canvas.getContext("2d");
+
+//	context.drawImage(coinImage,44,0,44,40,0,0,44,40);
+	
+	function drawCoin(i){
+		context.clearRect(0,0,44,40);
+		context.drawImage(coinImage,44*i,0,44,40,0,0,44,40);
+	}
+	let i=0;
+	setInterval(function(){
+		if(i==10){
+			i=0;
+		}
+		drawCoin(i);
+		i++;
+	},100);
+	
+</script>
+</html>
